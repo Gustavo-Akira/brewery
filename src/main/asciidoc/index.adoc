@@ -1,0 +1,43 @@
+# Brewery Docs
+Gustavo Akira Uekita;
+doctype: book
+:icons: font
+:source-highlighter: highlightjs
+
+A application demonstring how to use spring rest docs with junit 5
+
+`BeerControllerTest`: makes a service and produces three snippets:
+
+`Get Beer`
+
+One showing with cURL:
+
+include::{snippets}/v1/beer-get/curl-request.adoc[]
+
+One with Http:
+include::{snippets}/v1/beer-get/http-request.adoc[]
+
+Http Response:
+include::{snippets}/v1/beer-get/http-response.adoc[]
+
+Response Body:
+include::{snippets}/v1/beer-get/response-body.adoc[]
+
+Response Fields:
+include::{snippets}/v1/beer-get/response-fields.adoc[]
+
+`New Beer`
+
+One showing with cURL:
+
+include::{snippets}/v1/beer-new/curl-request.adoc[]
+
+One with Http:
+include::{snippets}/v1/beer-new/http-request.adoc[]
+
+Http Response:
+include::{snippets}/v1/beer-new/http-response.adoc[]
+
+Response Fields:
+include::{snippets}/v1/beer-new/request-fields.adoc[]
+
