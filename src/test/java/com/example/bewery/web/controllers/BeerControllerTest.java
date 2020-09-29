@@ -1,7 +1,9 @@
 package com.example.bewery.web.controllers;
 
+import com.example.bewery.bootstrap.BeerLoader;
 import com.example.bewery.domain.Beer;
 import com.example.bewery.repositories.BeerRepository;
+import com.example.bewery.service.BeerService;
 import com.example.bewery.web.model.BeerDTO;
 import com.example.bewery.web.model.enums.BeerStyleEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,17 +36,19 @@ import static org.springframework.restdocs.snippet.Attributes.key;
 @WebMvcTest(BeerController.class)
 @ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureRestDocs(uriScheme = "https",uriHost = "dev.gustavoakira.beer", uriPort = 80)
-@ComponentScan(basePackages = "com.example.bewery.web.mappers")
+@ComponentScan(basePackages = "com.example.bewery")
 class BeerControllerTest {
     @Autowired
     MockMvc mockMvc;
     @Autowired
     ObjectMapper objectMapper;
     @MockBean
+    BeerService beerService;
+    @MockBean
     BeerRepository beerRepository;
     @Test
     void getBeerById() throws Exception {
-        given(beerRepository.findById(any())).willReturn(Optional.of(Beer.builder().build()));
+        given(beerService.getById(any())).willReturn(getValidBeerDTO());
         mockMvc.perform(get("/api/v1/beer/{beerId}",UUID.randomUUID().toString())
                 .param("iscold","yes")
                 .accept(MediaType.APPLICATION_JSON))
@@ -108,7 +112,7 @@ class BeerControllerTest {
                 .beerName("My beer")
                 .beerStyle(BeerStyleEnum.ALE)
                 .price(new BigDecimal(12.74))
-                .upc(123123123L)
+                .upc(BeerLoader.BEER_1_UPC)
                 .build();
     }
     private static class ConstrainedFields{

@@ -1,6 +1,7 @@
 package com.example.bewery.web.model;
 
 import com.example.bewery.web.model.enums.BeerStyleEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,17 +19,20 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerDTO {
+public class BeerDTO                                                                                                                                                                                                                                                                                                                               {
 
     @Null
     private UUID id;
 
     @Null
     private Integer version;
+
     @Null
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime createdDate;
 
     @Null
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedDate;
 
     @NotBlank
@@ -37,12 +41,12 @@ public class BeerDTO {
     @NotNull
     private BeerStyleEnum beerStyle;
 
-    @Positive
     @NotNull
-    private Long upc;
+    private String upc;
 
     @Positive
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
 
     private Integer quantityOnHand;

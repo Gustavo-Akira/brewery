@@ -10,8 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("snake")
 @JsonTest
 public class BeerDTOSnakeTest extends BaseTest{
-    @Autowired
-    ObjectMapper objectMapper;
+
 
     @Test
     void testSnake() throws JsonProcessingException {
