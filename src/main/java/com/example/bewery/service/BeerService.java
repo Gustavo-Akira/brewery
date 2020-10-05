@@ -19,4 +19,6 @@ public interface BeerService {
     BeerDTO updateBeer(UUID beerId, BeerDTO beerDto) throws ChangeSetPersister.NotFoundException;
 
     BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest of, Boolean showInventory);
+
+    BeerDTO getByUpc(String beerId);
 }
