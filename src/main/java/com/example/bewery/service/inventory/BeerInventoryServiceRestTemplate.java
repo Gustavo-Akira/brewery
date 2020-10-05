@@ -33,8 +33,7 @@ public class BeerInventoryServiceRestTemplate implements BeerInventoryService{
     }
 
     @Override
-    public Integer getOnHandInventory(UUID beerId) {
-        System.out.println(beerInventoryServiceHost);
+    public Integer getOnHandInventory(UUID beerId){
         ResponseEntity<List<BeerInventoryDto>> responseEntity = restTemplate
                 .exchange(beerInventoryServiceHost + INVENTORY_PATH, HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<BeerInventoryDto>>() {},(Object) beerId);
