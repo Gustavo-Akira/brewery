@@ -1,4 +1,4 @@
-package com.example.bewery.events;
+package com.example.events;
 
 import com.example.bewery.web.model.BeerDTO;
 import lombok.*;
